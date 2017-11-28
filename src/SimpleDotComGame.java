@@ -15,7 +15,7 @@ public class SimpleDotComGame {
 //        locArr[1] = i + 1;
 //        locArr[2] = i + 2;
 
-        dot.setLocationCells(location);
+//        dot.setLocationCells(location);
 
         boolean isAlive = true;
 

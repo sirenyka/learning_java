@@ -1,5 +1,5 @@
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+//import java.io.InputStreamReader;
+import java.util.*;
 
 /**
  * игровое поле
@@ -23,10 +23,6 @@ public class DotCom {
     }
     public void setLocationCells(ArrayList<String> loc) {
         locationCells = loc;
-    }
-
-    public boolean checkAlive() {
-        return numOfHits < 3;
     }
 
     public void setName(String name) {
