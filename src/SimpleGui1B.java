@@ -1,18 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 
 
 public class SimpleGui1B implements ActionListener {
     JButton button;
-    MyDrawPanel myDrawPanel;
+    MyDrawPanelOld myDrawPanel;
 
     public static void main(String[] args) {
         SimpleGui1B gui = new SimpleGui1B();
 //        gui.go();
         gui.goMyPanel();
     }
+
 
     public void go() {
         JFrame frame = new JFrame();
@@ -32,7 +32,7 @@ public class SimpleGui1B implements ActionListener {
     }
     public void goMyPanel() {
         JFrame frame = new JFrame();
-        myDrawPanel = new MyDrawPanel();
+        myDrawPanel = new MyDrawPanelOld();
         frame.getContentPane().add(myDrawPanel);
         frame.setSize(300, 300);
 //        myDrawPanel.paintComponent();
