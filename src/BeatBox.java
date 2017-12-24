@@ -186,8 +186,8 @@ public class BeatBox {
                 FileOutputStream fileStream = new FileOutputStream(new File("Checkbox.ser"));
                 ObjectOutputStream os = new ObjectOutputStream(fileStream);
                 os.writeObject(checkboxState);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
