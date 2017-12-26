@@ -47,6 +47,14 @@ public class BeatBox {
         downTempo.addActionListener(new MyDownTempoListener());
         buttonBox.add(downTempo);
 
+        JButton saveIt = new JButton("Save It");
+        saveIt.addActionListener(new MySendListener());
+        buttonBox.add(saveIt);
+
+        JButton openFromFile = new JButton("Open From File");
+        openFromFile.addActionListener(new MyReadListener());
+        buttonBox.add(openFromFile);
+
         Box nameBox = new Box(BoxLayout.Y_AXIS);
         for (int i = 0; i < 16; i++) {
             nameBox.add(new Label(instrumentNames[i]));
@@ -172,7 +180,7 @@ public class BeatBox {
             sequencer.setTempoFactor((float)(tempoFactor * 0.9));
         }
     }
-    public class MySendListener implements ActionListener {
+    public class MySendListener extends Component implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             boolean[] checkboxState = new boolean[256];
@@ -183,7 +191,12 @@ public class BeatBox {
                 }
             }
             try {
-                FileOutputStream fileStream = new FileOutputStream(new File("Checkbox.ser"));
+                JFileChooser savefileChooser = new JFileChooser();
+                savefileChooser.setDialogTitle("Сохранение файла");
+                savefileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                savefileChooser.showSaveDialog(BeatBox.MySendListener.this);
+                File selectedFile = savefileChooser.getSelectedFile();
+                FileOutputStream fileStream = new FileOutputStream(selectedFile);
                 ObjectOutputStream os = new ObjectOutputStream(fileStream);
                 os.writeObject(checkboxState);
             } catch (Exception ex) {
@@ -191,12 +204,16 @@ public class BeatBox {
             }
         }
     }
-    public class MyReadListener implements ActionListener {
+    public class MyReadListener extends Component implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             boolean[] checkboxState = null;
             try {
-                FileInputStream fileIn = new FileInputStream(new File("Checkbox.ser"));
+                JFileChooser openFileChooser = new JFileChooser();
+                openFileChooser.setDialogTitle("Открыть из файла");
+                openFileChooser.showOpenDialog(BeatBox.MyReadListener.this);
+                File openedFile = openFileChooser.getSelectedFile();
+                FileInputStream fileIn = new FileInputStream(openedFile);
                 ObjectInputStream is = new ObjectInputStream(fileIn);
                 checkboxState = (boolean[]) is.readObject();
             } catch (Exception ex) {
