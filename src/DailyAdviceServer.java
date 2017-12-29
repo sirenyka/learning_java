@@ -8,7 +8,7 @@ public class DailyAdviceServer {
 
     public void go() {
         try {
-            ServerSocket serverSock = new ServerSocket(4242);
+            ServerSocket serverSock = new ServerSocket(5000);
             while(true) {
                 Socket sock = serverSock.accept();
 
