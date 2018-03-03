@@ -1,3 +1,4 @@
+import com.github.sirenyka.Animal;
 import org.omg.CORBA.Object;
 
 import java.util.ArrayList;

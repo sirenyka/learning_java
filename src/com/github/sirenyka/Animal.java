@@ -1,3 +1,5 @@
+package com.github.sirenyka;
+
 public abstract class Animal {
     private String name;
 

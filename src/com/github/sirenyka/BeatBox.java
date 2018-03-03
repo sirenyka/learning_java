@@ -1,3 +1,5 @@
+package com.github.sirenyka;
+
 import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
